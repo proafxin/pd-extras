@@ -1,2 +1,3 @@
-# pandas-utils
+# Pandas Utilities
+
 Some functions on top of pandas.

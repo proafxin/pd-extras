@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools", "wheel", "setuptools_scm[toml]"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pandas-utils"
+version = "1.1"
+authors = [{ name = "Masum Billal", email = "billalmasum93@gmail.com" }]
+description = "Some utility functions over pandas."
+readme = "README.md"
+requires-python = ">=3.6"
+license = { file = "LICENSE" }
+
+dependencies = ["pandas", "sphinx", "sphinx-book-theme"]
+
+[project.optional-dependencies]
+dev = ["black", "isort", "flake8", "requests", "pytest", "coverage"]

@@ -7,6 +7,7 @@ import pytest
 from pandas_utils.optimize.df_ops import (
     check_if_column_exists,
     check_if_columns_exist,
+    clean_column_names,
     select_columns_from_dataframe,
 )
 
@@ -35,3 +36,14 @@ class TestDfOps:
 
         with pytest.raises(ValueError):
             check_if_columns_exist(columns=["col_rand1", "col_ran2"], data=data)
+
+    def test_clean_column_names(self, data: pd.DataFrame) -> None:
+        """Test ```clean_column_names```"""
+
+        res: pd.DataFrame = clean_column_names(data=data)
+
+        assert res.shape == data.shape
+        for column in res.columns:
+            for char in column:
+                assert isinstance(char, str)
+                assert char.isalnum() is True

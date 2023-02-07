@@ -1,5 +1,7 @@
 """Optimize dataframe operations"""
 
+import re
+
 import numpy as np
 import pandas as pd
 
@@ -19,6 +21,7 @@ def select_columns_from_dataframe(
     :return: Dataframe with the selected columns.
     :rtype: ```pd.DataFrame```
     """
+
     check_if_columns_exist(columns=columns, data=data)
 
     indices: dict = {column: idx for idx, column in enumerate(data.columns)}
@@ -60,3 +63,29 @@ def check_if_columns_exist(columns: list, data: pd.DataFrame):
     for column in columns:
         if column not in data.columns:
             raise ValueError(f"{column} not found in {data.columns}")
+
+
+def clean_column(column: str, is_lower: bool = True, default_char: str = "") -> str:
+    if is_lower:
+        column = column.lower()
+
+    pattern = "[^a-zA-Z0-9]"
+
+    return re.sub(pattern=pattern, repl=default_char, string=column)
+
+
+def clean_column_names(
+    data: pd.DataFrame,
+    is_lower: bool = True,
+    default_char: str = "",
+) -> pd.DataFrame:
+    data.columns = [
+        clean_column(
+            column=column,
+            is_lower=is_lower,
+            default_char=default_char,
+        )
+        for column in data.columns
+    ]
+
+    return data

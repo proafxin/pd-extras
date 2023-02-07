@@ -4,12 +4,12 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from pandas_utils.optimize.df_ops import (
+from pandas_utils.check.sanitize import (
     check_if_column_exists,
     check_if_columns_exist,
     clean_column_names,
-    select_columns_from_dataframe,
 )
+from pandas_utils.optimize.df_ops import select_columns_from_dataframe
 
 
 class TestDfOps:

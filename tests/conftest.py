@@ -12,7 +12,7 @@ def data() -> pd.DataFrame:
     """Use this data for all the tests
 
     :return: Pandas dataframe of cities.
-    :rtype: ```pd.DataFrame```
+    :rtype: ``pd.DataFrame``
     """
 
     url = "https://people.sc.fsu.edu/~jburkardt/data/csv/cities.csv"

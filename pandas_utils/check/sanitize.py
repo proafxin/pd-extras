@@ -10,9 +10,9 @@ def check_if_column_exists(column: str, data: pd.DataFrame):
     Usually used to cross-check against a dataframe.
 
     :param column: Name of the column
-    :type column: ```str```
+    :type column: ``str``
     :param data: Dataframe object to check against.
-    :type data: ```pd.DataFrame```
+    :type data: ``pd.DataFrame``
     :raises ValueError: If the column is not found in the dataframe.
     """
 
@@ -26,9 +26,9 @@ def check_if_columns_exist(columns: list, data: pd.DataFrame):
     Usually used to cross-check against a dataframe.
 
     :param columns: List of columns
-    :type columns: ```list```
+    :type columns: ``list``
     :param data: Dataframe object to check against.
-    :type data: ```pd.DataFrame```
+    :type data: ``pd.DataFrame``
     :raises ValueError: If any of the columns is not found in the dataframe.
     """
 
@@ -41,7 +41,7 @@ def clean_column(column: str, is_lower: bool = True, default_char: str = "") -> 
     """Clean a column name.
 
     :param column: Name of column.
-    :type column: ```str```
+    :type column: ``str``
     :param is_lower: If cleaned column name should be in lowercase, defaults to True
     :type is_lower: bool, optional
     :param default_char: What to replace illegal characters with, defaults to "".
@@ -67,14 +67,14 @@ def clean_column_names(
     """Clean columns of a dataframe.
 
     :param data: Dataframe object.
-    :type data: ```pd.DataFrame```
+    :type data: ``pd.DataFrame``
     :param is_lower: If cleaned column name should be in lowercase, defaults to True
-    :type is_lower: ```bool, optional```
+    :type is_lower: ``bool, optional``
     :param default_char: What to replace illegal characters with, defaults to "".
         Another great choice is "_".
-    :type default_char: ```str, optional```
+    :type default_char: ``str, optional``
     :return: Dataframe with clean column names.
-    :rtype: ```pd.DataFrame```
+    :rtype: ``pd.DataFrame``
     """
 
     data.columns = [

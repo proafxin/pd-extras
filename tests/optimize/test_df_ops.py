@@ -2,21 +2,15 @@
 
 import numpy as np
 import pandas as pd
-import pytest
 
-from pandas_utils.check.sanitize import (
-    check_if_column_exists,
-    check_if_columns_exist,
-    clean_column_names,
-)
-from pandas_utils.optimize.df_ops import select_columns_from_dataframe
+from pandas_utils.optimize.df_ops import get_rows, select_columns_from_dataframe
 
 
 class TestDfOps:
-    """Test ```df_ops```"""
+    """Test ``df_ops``"""
 
     def test_select_columns(self, data: pd.DataFrame) -> None:
-        """Test ```select_columns_from_dataframe```"""
+        """Test ``select_columns_from_dataframe``"""
 
         columns = np.random.choice(data.columns, size=3)
         res = select_columns_from_dataframe(data=data, columns=list(columns))
@@ -25,25 +19,16 @@ class TestDfOps:
         assert res.shape[0] == data.shape[0]
         assert res.shape[1] == 3
 
-    def test_check_if_column_exists(self, data: pd.DataFrame) -> None:
-        """Test ```check_if_column_exists```"""
+        assert np.array_equal(res.to_numpy(), data[columns].to_numpy())
 
-        with pytest.raises(ValueError):
-            check_if_column_exists(column="random_column", data=data)
+    def test_get_rows(self, data: pd.DataFrame) -> None:
+        """Test ``get_rows``"""
 
-    def test_check_if_columns_exist(self, data: pd.DataFrame) -> None:
-        """Test ```check_if_columns_exist```"""
+        columns = np.random.choice(data.columns, size=3)
+        rows = get_rows(data=data, columns=list(columns))
 
-        with pytest.raises(ValueError):
-            check_if_columns_exist(columns=["col_rand1", "col_ran2"], data=data)
+        assert isinstance(rows, np.ndarray)
+        assert rows.shape[0] == data.shape[0]
+        assert rows.shape[1] == 3
 
-    def test_clean_column_names(self, data: pd.DataFrame) -> None:
-        """Test ```clean_column_names```"""
-
-        res: pd.DataFrame = clean_column_names(data=data)
-
-        assert res.shape == data.shape
-        for column in res.columns:
-            for char in column:
-                assert isinstance(char, str)
-                assert char.isalnum() is True
+        assert np.array_equal(data[columns].to_numpy(), rows) is True

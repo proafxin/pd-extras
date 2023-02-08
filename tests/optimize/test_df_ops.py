@@ -19,6 +19,8 @@ class TestDfOps:
         assert res.shape[0] == data.shape[0]
         assert res.shape[1] == 3
 
+        assert np.array_equal(res.to_numpy(), data[columns].to_numpy())
+
     def test_get_rows(self, data: pd.DataFrame) -> None:
         """Test ``get_rows``"""
 
@@ -28,3 +30,5 @@ class TestDfOps:
         assert isinstance(rows, np.ndarray)
         assert rows.shape[0] == data.shape[0]
         assert rows.shape[1] == 3
+
+        assert np.array_equal(data[columns].to_numpy(), rows) is True

@@ -7,6 +7,7 @@ Subpackages
 .. toctree::
    :maxdepth: 4
 
+   pandas_utils.check
    pandas_utils.optimize
 
 Module contents

@@ -8,6 +8,7 @@ Subpackages
    :maxdepth: 4
 
    pandas_utils.check
+   pandas_utils.extra
    pandas_utils.optimize
 
 Module contents

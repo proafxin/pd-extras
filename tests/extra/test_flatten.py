@@ -1,5 +1,7 @@
 """Test flatten module"""
 
+from typing import Union
+
 import pandas as pd
 
 from pandas_utils.extra.flatten import Flattener
@@ -29,11 +31,16 @@ random_nested_data = {
 }
 
 
-def _test_flat_data(num_rows_to_check: int, depth: int, data: pd.DataFrame) -> None:
+def _test_flat_data(
+    num_rows_to_check: int, depth: int, data: Union[pd.DataFrame, dict]
+) -> None:
     flattener = Flattener(num_rows_to_check=num_rows_to_check, depth=depth)
 
     flat_data = flattener.flatten(data=data)
     column_info = flattener.get_column_info(data=data)
+
+    if isinstance(data, dict):
+        data = pd.DataFrame(data=[data])
     for column, status in zip(data.columns, column_info):
         if not status:
             assert column in flat_data.columns
@@ -50,3 +57,12 @@ def test_flatten_dataframe():
 
     data = pd.DataFrame(data=[random_nested_data])
     _test_flat_data(num_rows_to_check=1, depth=1, data=data)
+    data = {
+        "a": 1,
+        "b": {
+            "c": 2,
+        },
+    }
+    _test_flat_data(num_rows_to_check=1, depth=1, data=data)
+
+    _test_flat_data(num_rows_to_check=1, depth=0, data=data)

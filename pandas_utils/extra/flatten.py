@@ -36,6 +36,18 @@ class Flattener:
 
         column_info = []
 
+        if isinstance(data, dict):
+            keys = data.keys()
+            data = pd.json_normalize(data=data)
+            columns = data.columns.tolist()
+            for key in keys:
+                if key in columns:
+                    column_info.append(False)
+                else:
+                    column_info.append(True)
+
+            return column_info
+
         rows = data.iloc[: self.num_rows_to_check]
         for column in data.columns:
             values = rows[column].to_numpy()
@@ -62,7 +74,7 @@ class Flattener:
         else:
             data = pd.json_normalize(data=data.to_dict("records"), sep=self.sep)
 
-        if depth <= depth_cur:
+        if depth <= depth_cur or depth < 1:
             return data
 
         columns = data.columns
@@ -106,8 +118,5 @@ class Flattener:
         :return: Normalized dataframe.
         :rtype: ``pd.DataFrame``
         """
-
-        if self.depth < 1:
-            return data
 
         return self._flatten(data=data, depth=self.depth, depth_cur=0)

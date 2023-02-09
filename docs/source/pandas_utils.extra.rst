@@ -12,6 +12,14 @@ pandas\_utils.extra.flatten module
    :undoc-members:
    :show-inheritance:
 
+pandas\_utils.extra.operations module
+-------------------------------------
+
+.. automodule:: pandas_utils.extra.operations
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 

@@ -17,7 +17,10 @@ def auto_join(
     :type how: ``str, optional``
     :raises ValueError: If no common column is found.
     :return: Dataframe with the join output.
-    :rtype: ``pd.DataFrame```
+    :rtype: ``pd.DataFrame``
+    :example:
+        >>> from pandas_utils.extra.operations import auto_join
+        >>> joined_df = auto_join(left=left, right=right)
     """
 
     common_cols = list(set(left.columns).intersection(set(right.columns)))
@@ -61,6 +64,10 @@ def generate_random_dataframe(
     :type high_float: ``float, optional``
     :return: Dataframe with ``num_int_cols`` int columns and ``num_float_cols`` float columns.
     :rtype: ``pd.DataFrame``
+    :example:
+        >>> from pandas_utils.extra.operations import generate_random_dataframe
+        >>> size = 100_000
+        >>> data = generate_random_dataframe(num_int_cols=2, num_float_cols=3, size=size)
     """
 
     data = pd.DataFrame()

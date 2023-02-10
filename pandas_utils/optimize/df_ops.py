@@ -21,6 +21,9 @@ def select_columns_from_dataframe(
     :type columns: ``list``
     :return: Dataframe with the selected columns.
     :rtype: ``pd.DataFrame``
+    :example:
+        >>> from pandas_utils.optimize.df_ops import select_columns_from_dataframe
+        >>> res = select_columns_from_dataframe(data=data, columns=list(columns))
     """
 
     check_if_columns_exist(columns=columns, data=data)
@@ -43,6 +46,9 @@ def get_rows(data: pd.DataFrame, columns: list) -> np.ndarray:
     :type columns: ``list``
     :return: Numpy array containing iterable rows.
     :rtype: ``np.ndarray``
+    :example:
+        >>> from pandas_utils.optimize.df_ops import get_rows
+        >>> rows = get_rows(data=data, columns=list(columns))
     """
 
     check_if_columns_exist(columns=columns, data=data)

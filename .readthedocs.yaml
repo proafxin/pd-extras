@@ -5,12 +5,15 @@ build:
   tools:
     python: "3.8"
 
+sphinx:
+  fail_on_warning: true
+
  formats:
     - pdf
 
-# Optionally declare the Python requirements required to build your docs
 python:
    install:
    - requirements: requirements.txt
-   - method: pip
-   system_packages: true
+   install:
+     - method: pip
+       path: .

@@ -8,10 +8,10 @@ build:
 sphinx:
   fail_on_warning: true
 
- formats:
-    - pdf
+formats:
+  - pdf
 
 python:
-   install:
-     - method: pip
-       path: .
+  install:
+    - method: pip
+      path: .

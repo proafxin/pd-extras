@@ -22,7 +22,8 @@ jobs:
       - name: Generate coverage report
         run: |
           pip install -U pip
-          pip install -U pytest coverage
+          pip install -U pandas pytest coverage
+          pip install -e .
           coverage run -m pytest tests/
           coverage xml -o coverage.xml
       - name: Upload coverage to Codecov

@@ -1,11 +1,14 @@
 [tool.poetry]
 name = "pandas-utils"
-version = "1.0.4"
+version = "1.0.5"
 description = "Some utility functions on top of pandas."
 authors = ["Masum Billal <billalmasum93@gmail.com>"]
 license = "LICENSE"
 readme = "README.md"
 packages = [{ include = "pandas_utils" }]
+repository = "https://github.com/proafxin/pandas-utils"
+documentation = "https://pandas-utils.readthedocs.io/en/latest/"
+
 
 [tool.poetry.dependencies]
 python = "^3.8"

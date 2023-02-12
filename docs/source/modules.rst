@@ -1,5 +1,5 @@
-pandas-utils
-============
+pd-extras
+=========
 
 .. toctree::
    :maxdepth: 4

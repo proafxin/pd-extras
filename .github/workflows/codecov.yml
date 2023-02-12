@@ -22,10 +22,10 @@ jobs:
       - name: Generate coverage report
         run: |
           pip install -U pip
-          pip install -U pandas pytest coverage
-          pip install -e .
-          coverage run -m pytest tests/
-          coverage xml -o coverage.xml
+          pip install poetry>=1.3.2
+          poetry install --with dev
+          poetry run coverage run -m pytest tests/
+          poetry run coverage xml -o coverage.xml
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:

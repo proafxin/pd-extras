@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pandas-utils"
-version = "0.1.0"
+version = "1.0.0"
 description = "Some utility functions on top of pandas."
 authors = ["Masum Billal <billalmasum93@gmail.com>"]
 license = "LICENSE"

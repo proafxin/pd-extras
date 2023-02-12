@@ -3,8 +3,7 @@
 
 import numpy as np
 import pandas as pd
-
-from pandas_utils.check.sanitize import check_if_columns_exist
+from pd_extras.check.sanitize import check_if_columns_exist
 
 
 def select_columns_from_dataframe(

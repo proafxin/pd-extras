@@ -3,8 +3,7 @@
 from typing import Union
 
 import pandas as pd
-
-from pandas_utils.extra.flatten import Flattener
+from pd_extras.extra.flatten import Flattener
 
 random_nested_data = {
     "id": "0001",

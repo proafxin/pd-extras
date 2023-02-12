@@ -1,5 +1,5 @@
-pandas\_utils package
-=====================
+pd\_extras package
+==================
 
 Subpackages
 -----------
@@ -7,14 +7,14 @@ Subpackages
 .. toctree::
    :maxdepth: 4
 
-   pandas_utils.check
-   pandas_utils.extra
-   pandas_utils.optimize
+   pd_extras.check
+   pd_extras.extra
+   pd_extras.optimize
 
 Module contents
 ---------------
 
-.. automodule:: pandas_utils
+.. automodule:: pd_extras
    :members:
    :undoc-members:
    :show-inheritance:

@@ -1,9 +1,9 @@
 [tool.poetry]
 name = "pd-extras"
-version = "3.1.5"
+version = "3.1.6"
 description = "Some utility functions on top of pandas."
 authors = ["Masum Billal <billalmasum93@gmail.com>"]
-license = "LICENSE"
+license = "MIT"
 readme = "README.md"
 packages = [{ include = "pd_extras" }]
 repository = "https://github.com/proafxin/pandas-utils"

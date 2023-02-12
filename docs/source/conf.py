@@ -11,7 +11,7 @@ import sys
 
 sys.path.insert(0, os.path.abspath("../.."))
 
-project = "Pandas Utilities"
+project = "Pandas Extras"
 copyright = "2023, Masum Billal"
 author = "Masum Billal"
 release = "1.1"

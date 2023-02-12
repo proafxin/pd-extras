@@ -3,9 +3,8 @@
 import numpy as np
 import pandas as pd
 import pytest
-
-from pandas_utils.check.sanitize import check_if_columns_exist
-from pandas_utils.extra.operations import auto_join, generate_random_dataframe
+from pd_extras.check.sanitize import check_if_columns_exist
+from pd_extras.extra.operations import auto_join, generate_random_dataframe
 
 
 def test_generate_random_dataframe():

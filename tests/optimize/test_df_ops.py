@@ -2,8 +2,7 @@
 
 import numpy as np
 import pandas as pd
-
-from pandas_utils.optimize.df_ops import get_rows, select_columns_from_dataframe
+from pd_extras.optimize.df_ops import get_rows, select_columns_from_dataframe
 
 
 class TestDfOps:

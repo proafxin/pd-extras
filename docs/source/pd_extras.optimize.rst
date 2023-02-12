@@ -1,13 +1,13 @@
-pandas\_utils.check package
+pd\_extras.optimize package
 ===========================
 
 Submodules
 ----------
 
-pandas\_utils.check.sanitize module
------------------------------------
+pd\_extras.optimize.df\_ops module
+----------------------------------
 
-.. automodule:: pandas_utils.check.sanitize
+.. automodule:: pd_extras.optimize.df_ops
    :members:
    :undoc-members:
    :show-inheritance:
@@ -15,7 +15,7 @@ pandas\_utils.check.sanitize module
 Module contents
 ---------------
 
-.. automodule:: pandas_utils.check
+.. automodule:: pd_extras.optimize
    :members:
    :undoc-members:
    :show-inheritance:

@@ -32,6 +32,6 @@ exclude_patterns = []
 
 html_theme = "sphinxdoc"
 
-html_theme_options = {"sidebarwidth": 500}
+html_theme_options = {"sidebarwidth": 800}
 
 html_static_path = []

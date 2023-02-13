@@ -4,10 +4,10 @@ pd\_extras.extra package
 Submodules
 ----------
 
-pd\_extras.extra.flatten module
--------------------------------
+pd\_extras.extra.flattener module
+---------------------------------
 
-.. automodule:: pd_extras.extra.flatten
+.. automodule:: pd_extras.extra.flattener
    :members:
    :undoc-members:
    :show-inheritance:

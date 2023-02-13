@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pd-extras"
-version = "4.2.0"
+version = "4.2.1"
 description = "Some utility functions on top of pandas."
 authors = ["Masum Billal <billalmasum93@gmail.com>"]
 license = "MIT"

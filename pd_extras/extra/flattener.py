@@ -11,13 +11,12 @@ import pandas as pd
 class Flattener:
     """Class to flatten dataframes.
 
-    :example:
-        >>> from pandas_utils.extra.flatten import Flattener
-        >>> flattener = Flattener(num_rows_to_check=num_rows_to_check, depth=depth)
-        >>> # Flatten the dataframe
-        >>> flat_data = flattener.flatten(data=data)
-        >>> # Check whether a column has nested data or not
-        >>> column_info = flattener.get_column_info(data=data)
+    >>> from pandas_utils.extra.flattener import Flattener
+    >>> flattener = Flattener(num_rows_to_check=num_rows_to_check, depth=depth)
+    >>> # Flatten the dataframe
+    >>> flat_data = flattener.flatten(data=data)
+    >>> # Check whether a column has nested data or not
+    >>> column_info = flattener.get_column_info(data=data)
     """
 
     num_rows_to_check: int

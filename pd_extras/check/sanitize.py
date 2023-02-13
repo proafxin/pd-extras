@@ -14,9 +14,9 @@ def check_if_column_exists(column: str, data: pd.DataFrame):
     :param data: Dataframe object to check against.
     :type data: ``pd.DataFrame``
     :raises ValueError: If the column is not found in the dataframe.
-    :example:
-        >>> from pandas_utils.check.sanitize import check_if_column_exists
-        >>> check_if_column_exists(column="random_column", data=data)
+
+    >>> from pandas_utils.check.sanitize import check_if_column_exists
+    >>> check_if_column_exists(column="random_column", data=data)
     """
 
     columns = data.columns
@@ -33,9 +33,9 @@ def check_if_columns_exist(columns: list, data: pd.DataFrame):
     :param data: Dataframe object to check against.
     :type data: ``pd.DataFrame``
     :raises ValueError: If any of the columns is not found in the dataframe.
-    :example:
-        >>> from pandas_utils.check.sanitize import check_if_columns_exist
-        >>> check_if_columns_exist(columns=["col_rand1", "col_ran2"], data=data)
+
+    >>> from pandas_utils.check.sanitize import check_if_columns_exist
+    >>> check_if_columns_exist(columns=["col_rand1", "col_ran2"], data=data)
     """
 
     for column in columns:
@@ -55,13 +55,13 @@ def clean_column(column: str, is_lower: bool = True, default_char: str = "") -> 
     :type default_char: ``str, optional``
     :return: Dataframe with clean column names.
     :rtype: ``str``
-    :example:
-        >>> from pandas_utils.check.sanitize import clean_column
-        >>> column_new = clean_column(
-        >>>     column=column,
-        >>>     is_lower=is_lower,
-        >>>     default_char=default_char,
-        >>> )
+
+    >>> from pandas_utils.check.sanitize import clean_column
+    >>> column_new = clean_column(
+    >>>     column=column,
+    >>>     is_lower=is_lower,
+    >>>     default_char=default_char,
+    >>> )
     """
 
     if is_lower:
@@ -88,9 +88,9 @@ def clean_column_names(
     :type default_char: ``str, optional``
     :return: Dataframe with clean column names.
     :rtype: ``pd.DataFrame``
-    :example:
-        >>> from pandas_utils.check.sanitize import clean_column_names
-        >>> res: pd.DataFrame = clean_column_names(data=data)
+
+    >>> from pandas_utils.check.sanitize import clean_column_names
+    >>> res: pd.DataFrame = clean_column_names(data=data)
     """
 
     data.columns = [

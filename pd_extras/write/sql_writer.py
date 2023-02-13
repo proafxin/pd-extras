@@ -93,15 +93,20 @@ class SQLDatabaseWriter:
         """Get table schema from database.
 
         :param table_name: Name of the table in database.
-        :type table_name: `str`
+        :type table_name: ``str``
         :return: Pandas dataframe of table schema information.
-        :rtype: `pd.DataFrame`
+        :rtype: ``pd.DataFrame``
         """
 
         sa_session = Session(self.__engine)
+        _saved_values: dict = saved_values[self.__dbtype]
 
-        query = saved_values[self.__dbtype]["query"]["column_info"].format(
-            self.__dbname, table_name
+        self._check_name(name=self.__dbname)
+        self._check_name(name=table_name)
+
+        query: str = _saved_values["query"]["column_info"] % (
+            self.__dbname,
+            table_name,
         )
         session = sa_session.execute(query)
         cursor = session.cursor
@@ -155,6 +160,11 @@ class SQLDatabaseWriter:
         data = data.reset_index(drop=True)
 
         return data
+
+    def _check_name(self, name: str) -> None:
+        for char in name:
+            if (not char.isalnum()) and (char not in ["_", "-"]):
+                raise ValueError(f"Unacceptable character {char} found in {name}")
 
     def _clean_column(self, column: str):
         return str(column).strip().strip('"')

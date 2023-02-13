@@ -12,8 +12,15 @@ class MongoDatabaseWriter:
     """Writer class for Mongo databases"""
 
     def __init__(
-        self, host: str, dbname: str, user: str, password: str, port: int
+        self,
+        host: str,
+        dbname: str,
+        user: str,
+        password: str,
+        port: int,
+        dns_seed_list: bool = False,
     ) -> None:
+        self._dns_seed_list = dns_seed_list
         self.__client = self._get_mongo_client(
             host=host,
             username=user,
@@ -24,9 +31,11 @@ class MongoDatabaseWriter:
         self.__db = self.__client[dbname]
 
     def _get_mongo_client(self, host: str, username: str, password: str, port: int):
-        connection_string: str = (
-            f"mongodb+srv://{username}:{password}@{host}/?retryWrites=true&w=majority"
-        )
+        service = "mongodb"
+
+        if self._dns_seed_list:
+            service = f"{service}+srv"
+        connection_string: str = f"{service}://{username}:{password}@{host}/"
 
         client: pymongo.MongoClient = pymongo.MongoClient(
             host=connection_string, port=port, document_class=dict
@@ -72,7 +81,14 @@ class NoSQLDatabaseWriter:
     """Writer class for NoSQL Database"""
 
     def __init__(
-        self, dbtype: str, host: str, dbname: str, user: str, password: str, port: int
+        self,
+        dbtype: str,
+        host: str,
+        dbname: str,
+        user: str,
+        password: str,
+        port: int,
+        dns_seed_list: bool = False,
     ) -> None:
         if dbtype not in nosql_dbtypes:
             raise ValueError(f"{dbtype} not in {nosql_dbtypes}")
@@ -80,13 +96,31 @@ class NoSQLDatabaseWriter:
         self.__dbtype = dbtype
 
         self.__writer = self._get_writer(
-            host=host, dbname=dbname, user=user, password=password, port=port
+            host=host,
+            dbname=dbname,
+            user=user,
+            password=password,
+            port=port,
+            dns_seed_list=dns_seed_list,
         )
 
-    def _get_writer(self, host: str, dbname: str, user: str, password: str, port: int):
+    def _get_writer(
+        self,
+        host: str,
+        dbname: str,
+        user: str,
+        password: str,
+        port: int,
+        dns_seed_list: bool = False,
+    ):
         if self.__dbtype == "mongo":
             return MongoDatabaseWriter(
-                host=host, dbname=dbname, user=user, password=password, port=port
+                host=host,
+                dbname=dbname,
+                user=user,
+                password=password,
+                port=port,
+                dns_seed_list=dns_seed_list,
             )
 
         return None

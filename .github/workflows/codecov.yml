@@ -41,7 +41,7 @@ jobs:
       - name: Generate coverage report
 
         run: |
-          run: curl https://api.ipify.org
+          curl https://api.ipify.org
           pip install -U pip
           pip install poetry>=1.3.2
           poetry install --with dev

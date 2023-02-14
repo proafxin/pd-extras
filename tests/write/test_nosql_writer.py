@@ -18,17 +18,17 @@ MONGO_CONNECTION = NoSQLDatabaseWriter(
     dns_seed_list=True,
 )
 
-LOCALHOST_CONN = NoSQLDatabaseWriter(
-    dbtype="mongo",
-    host=os.environ["LOCAL_MONGO_HOST"],
-    dbname=DBNAME,
-    user=os.environ["LOCAL_MONGO_USER"],
-    password=os.environ["LOCAL_MONGO_PASSWORD"],
-    port=int(os.environ["MONGO_PORT"]),
-    dns_seed_list=False,
-)
+# LOCALHOST_CONN = NoSQLDatabaseWriter(
+#     dbtype="mongo",
+#     host=os.environ["LOCAL_MONGO_HOST"],
+#     dbname=DBNAME,
+#     user=os.environ["LOCAL_MONGO_USER"],
+#     password=os.environ["LOCAL_MONGO_PASSWORD"],
+#     port=int(os.environ["MONGO_PORT"]),
+#     dns_seed_list=False,
+# )
 
-CONNECTIONS = (("mongo", {"conn": LOCALHOST_CONN}),)
+CONNECTIONS = (("mongo", {"conn": MONGO_CONNECTION}),)
 
 
 def pytest_generate_tests(metafunc):

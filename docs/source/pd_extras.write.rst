@@ -4,14 +4,6 @@ pd\_extras.write package
 Submodules
 ----------
 
-pd\_extras.write.bq\_writer module
-----------------------------------
-
-.. automodule:: pd_extras.write.bq_writer
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 pd\_extras.write.common module
 ------------------------------
 

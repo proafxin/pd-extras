@@ -10,6 +10,7 @@ Subpackages
    pd_extras.check
    pd_extras.extra
    pd_extras.optimize
+   pd_extras.write
 
 Module contents
 ---------------

@@ -2,7 +2,7 @@
 
 
 import pandas as pd
-from pandas.api.types import is_integer_dtype, is_numeric_dtype
+from pandas.api.types import is_integer_dtype, is_numeric_dtype  # type: ignore
 from pd_extras.write.common import saved_values
 from sqlalchemy import (
     Column,
@@ -110,13 +110,14 @@ class SQLDatabaseWriter:
             table_name,
         )
         session = sa_session.execute(query)
-        cursor = session.cursor
+        cursor = session.cursor  # type: ignore
         cols = [detail[0] for detail in cursor.description]
         res = cursor.fetchall()
         res = [list(row) for row in res]
 
         info = pd.DataFrame(res, columns=cols)
-        info.columns = [column.lower() for column in info.columns]
+        columns: list = [str(column.lower()) for column in info.columns.tolist()]
+        info.columns = columns  # type: ignore
 
         session.close()
 
@@ -171,7 +172,7 @@ class SQLDatabaseWriter:
         return str(column).strip().strip('"')
 
     def _clean_columns(self, data: pd.DataFrame):
-        data.columns = [self._clean_column(column) for column in data.columns]
+        data.columns = [self._clean_column(column) for column in data.columns]  # type: ignore
 
         return data
 
@@ -271,7 +272,7 @@ class SQLDatabaseWriter:
         if clean_columns:
             data = self._clean_columns(data=data)
 
-        data = data.astype(object).where(pd.notnull(data), None)
+        data = data.astype(object).where(pd.notnull(data), None)  # type: ignore
 
         table = self._get_table_from_dataframe(
             data=data,

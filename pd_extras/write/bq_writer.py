@@ -16,6 +16,7 @@ class BigQueryWriter:
         _credentials = service_account.Credentials.from_service_account_file(
             filename=path_to_credentials,
         )
+        print(_credentials)
         self._client: bigquery.Client = bigquery.Client(credentials=_credentials)
 
     @property

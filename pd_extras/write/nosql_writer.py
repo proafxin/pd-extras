@@ -21,7 +21,7 @@ class MongoDatabaseWriter:
         dns_seed_list: bool = False,
     ) -> None:
         self._dns_seed_list = dns_seed_list
-        
+
         port = int(port)
         self.__client = self._get_mongo_client(
             host=host,

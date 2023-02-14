@@ -8,23 +8,6 @@ on:
 
 jobs:
   test:
-    env:
-      MYSQL_HOST: ${{ secrets.MYSQL_HOST }}
-      MYSQL_USER: ${{ secrets.MYSQL_USER }}
-      MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
-      MYSQL_PORT: ${{ secrets.MYSQL_PORT }}
-      POSTGRESQL_HOST: ${{ secrets.POSTGRESQL_HOST }}
-      POSTGRESQL_USER: ${{ secrets.POSTGRESQL_USER }}
-      POSTGRESQL_PASSWORD: ${{ secrets.POSTGRESQL_PASSWORD }}
-      POSTGRESQL_PORT: ${{ secrets.POSTGRESQL_PORT }}
-      SQLSERVER_HOST: ${{ secrets.SQLSERVER_HOST }}
-      SQLSERVER_USER: ${{ secrets.SQLSERVER_USER }}
-      SQLSERVER_PASSWORD: ${{ secrets.SQLSERVER_PASSWORD }}
-      SQLSERVER_PORT: ${{ secrets.SQLSERVER_PORT }}
-      MONGO_HOST: ${{ secrets.MONGO_HOST }}
-      MONGO_USER: ${{ secrets.MONGO_USER }}
-      MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
-      MONGO_PORT: ${{ secrets.MONGO_PORT }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -39,9 +22,6 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
         run: |
-          env
-          echo ${{ secrets.MONGO_HOST }}
-          echo ${{ env.MONGO_HOST }}
           python -m pip install -U pip
           python -m pip install -U tox tox-gh-actions
       - name: Test with tox

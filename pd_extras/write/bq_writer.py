@@ -118,7 +118,8 @@ class BigQueryWriter:
         """
 
         table_ref = self.get_table_ref(dataset_id=dataset_id, table_name=table_name)
-        query = f"DELETE FROM {table_ref} WHERE true;"
+        # pylint: disable = consider-using-f-string
+        query = """DELETE FROM %s WHERE true;""" % (table_ref,)
 
         result = self._client.query(query=query)
 

@@ -33,7 +33,7 @@ def select_columns_from_dataframe(
     for column in columns:
         selected_indices.append(indices[column])
 
-    return np.take(a=data, indices=selected_indices, axis=1)
+    return np.take(a=data, indices=selected_indices, axis=1)  # type: ignore
 
 
 def get_rows(data: pd.DataFrame, columns: list) -> np.ndarray:

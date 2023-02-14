@@ -40,9 +40,9 @@ jobs:
       - name: Generate coverage report
 
         run: |
-          echo MYSQL_PORT
-          echo SQLSERVER_PORT
-          echo MONGO_PORT
+          echo $MYSQL_PORT
+          echo $SQLSERVER_PORT
+          echo $MONGO_PORT
           pip install -U pip
           pip install poetry>=1.3.2
           poetry install --with dev

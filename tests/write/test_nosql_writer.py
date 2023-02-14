@@ -8,6 +8,9 @@ from pymongo import results
 
 DBNAME = "_testdb_"
 
+print(os.environ['MONGO_PORT'])
+print(type(os.environ['MONGO_PORT']), int(os.environ['MONGO_PORT']))
+
 MONGO_CONNECTION = NoSQLDatabaseWriter(
     dbtype="mongo",
     host=os.environ["MONGO_HOST"],

@@ -40,6 +40,7 @@ class SQLDatabaseWriter:
         assert dbname is not None, "`dbname` must be a valid database name"
         self.__dbtype = dbtype
         self.__dbname = dbname
+        port = int(port)
 
         self.__engine = self._get_db_specific_engine(
             host=host,

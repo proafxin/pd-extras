@@ -26,6 +26,13 @@ env:
   BIGQUERY_DATASET: ${{ vars.BIGQUERY_DATASET }}
 
 jobs:
+  ip:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Check IP
+        run: curl https://api.ipify.org
   run:
     runs-on: ${{ matrix.os }}
     strategy:

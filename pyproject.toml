@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pd-extras"
-version = "2.3.2"
+version = "2.3.3"
 description = "Some utility functions on top of pandas."
 authors = ["Masum Billal <billalmasum93@gmail.com>"]
 license = "MIT"
@@ -11,7 +11,7 @@ documentation = "https://pandas-utils.readthedocs.io/en/latest/"
 
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.9"
 pandas = ">=1.5.3"
 sqlalchemy = "^1.4.0"
 pymongo = "*"

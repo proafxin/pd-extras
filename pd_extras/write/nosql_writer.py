@@ -1,4 +1,4 @@
-"""Write a pandas dataframe to a NoSQL database collection"""
+"""Write a pandas dataframe to a NoSQL database collection."""
 
 
 import pandas as pd
@@ -9,7 +9,7 @@ __all__ = ["NoSQLDatabaseWriter"]
 
 
 class MongoDatabaseWriter:
-    """Writer class for Mongo databases"""
+    """Writer class for Mongo databases."""
 
     def __init__(
         self,
@@ -80,7 +80,7 @@ class MongoDatabaseWriter:
 
 
 class NoSQLDatabaseWriter:
-    """Writer class for NoSQL Database"""
+    """Writer class for NoSQL Database."""
 
     def __init__(
         self,

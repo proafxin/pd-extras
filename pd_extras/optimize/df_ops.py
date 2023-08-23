@@ -1,4 +1,4 @@
-"""Optimize dataframe operations"""
+"""Optimize dataframe operations."""
 
 
 import numpy as np

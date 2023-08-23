@@ -1,7 +1,6 @@
 """Flatten dataframes."""
 
 from dataclasses import dataclass, field
-from typing import Union
 
 import numpy as np
 import pandas as pd
@@ -66,7 +65,7 @@ class Flattener:
         return column_info
 
     def _flatten(
-        self, data: Union[pd.DataFrame, dict], depth: int = 0, depth_cur: int = 0
+        self, data: pd.DataFrame | dict, depth: int = 0, depth_cur: int = 0
     ) -> pd.DataFrame:
         if isinstance(data, dict):
             data = pd.json_normalize(data=data)
@@ -109,7 +108,7 @@ class Flattener:
 
         return self._flatten(data=flat_data, depth=depth, depth_cur=depth_cur + 1)
 
-    def flatten(self, data: Union[dict, pd.DataFrame]) -> pd.DataFrame:
+    def flatten(self, data: dict | pd.DataFrame) -> pd.DataFrame:
         """Return a normalized dataframe.
 
         :param data: Pandas dataframe to normalize.

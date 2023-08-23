@@ -1,4 +1,4 @@
-"""Write a pandas dataframe to a SQL database table"""
+"""Write a pandas dataframe to a SQL database table."""
 
 
 import pandas as pd
@@ -36,8 +36,11 @@ class SQLDatabaseWriter:
         password: str,
         port: int,
     ):
-        assert dbtype in saved_values, f"{dbtype} not in {list(saved_values.keys())}"
-        assert dbname is not None, "`dbname` must be a valid database name"
+        if dbtype not in saved_values:
+            raise KeyError(f"{dbtype} not in {list(saved_values.keys())}")
+        if not dbname:
+            raise ValueError("`dbname` must be a valid database name.")
+
         self.__dbtype = dbtype
         self.__dbname = dbname
         port = int(port)
@@ -244,7 +247,7 @@ class SQLDatabaseWriter:
         clean_columns: bool = True,
         max_length: int = 100,
     ):
-        """Write `data` to Table `table_name`
+        """Write `data` to Table `table_name`.
 
         :param data: Pandas dataframe containing data to write.
         :type data: `pd.DataFrame`
@@ -292,6 +295,6 @@ class SQLDatabaseWriter:
         return result
 
     def close_connection(self):
-        """Close the current connection to the database"""
+        """Close the current connection to the database."""
 
         self.__engine.dispose()

@@ -1,4 +1,4 @@
-"""Common variables for dataframe to database module"""
+"""Common variables for dataframe to database module."""
 
 saved_values = {
     "sqlserver": {

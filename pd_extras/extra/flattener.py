@@ -1,4 +1,4 @@
-"""Flatten dataframes"""
+"""Flatten dataframes."""
 
 from dataclasses import dataclass, field
 from typing import Union

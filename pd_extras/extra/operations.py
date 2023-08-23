@@ -1,4 +1,4 @@
-"""Some extra operations"""
+"""Some extra operations."""
 
 import numpy as np
 import pandas as pd

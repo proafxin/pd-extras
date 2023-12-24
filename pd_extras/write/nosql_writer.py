@@ -1,4 +1,4 @@
-"""Write a pandas dataframe to a NoSQL database collection"""
+"""Write a pandas dataframe to a NoSQL database collection."""
 
 
 import pandas as pd

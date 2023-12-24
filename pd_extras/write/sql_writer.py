@@ -1,4 +1,4 @@
-"""Write a pandas dataframe to a SQL database table"""
+"""Write a pandas dataframe to a SQL database table."""
 
 
 import pandas as pd

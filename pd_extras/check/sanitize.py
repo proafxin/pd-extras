@@ -1,4 +1,4 @@
-"""Check sanity of dataframes"""
+"""Check sanity of dataframes."""
 
 import re
 

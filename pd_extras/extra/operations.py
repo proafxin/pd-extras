@@ -1,4 +1,4 @@
-"""Some extra operations"""
+"""Some helper operations for joining and generating random data."""
 
 import numpy as np
 import pandas as pd

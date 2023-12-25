@@ -8,7 +8,7 @@ import pandas as pd
 from pd_extras.write.sql_writer import SQLDatabaseWriter
 from sqlalchemy.engine.cursor import CursorResult
 
-DBNAME = "__test_db__"
+DBNAME = "somedumbdb"
 
 MYSQL_CONNECTION = SQLDatabaseWriter(
     dbtype="mysql",

@@ -77,7 +77,6 @@ jobs:
       - name: Tox
         run: |
           tox
-          ./.tox/tests/bin/coverage xml -o coverage.xml
       - name: Codecov
         uses: codecov/codecov-action@v3
         with:

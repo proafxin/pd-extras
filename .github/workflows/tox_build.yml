@@ -25,4 +25,5 @@ jobs:
           python -m pip install -U pip
           python -m pip install -U tox tox-gh-actions
       - name: Test with tox
-        run: tox
+        run: |
+          docker run -d --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=secret  mysql:latest

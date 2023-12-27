@@ -9,7 +9,7 @@ on:
 
 
 env:
-  MYSQL_HOST: 127.0.0.1
+  MYSQL_HOST: ${{ vars.MYSQL_HOST }}
   MYSQL_USER: ${{ vars.MYSQL_USER }}
   MYSQL_PASSWORD: ${{ vars.MYSQL_PASSWORD }}
   MYSQL_PORT: ${{ vars.MYSQL_PORT }}
@@ -83,13 +83,8 @@ jobs:
             -e "MSSQL_TCP_PORT=1433"
             -e "MSSQL_SA_PASSWORD=$SQLSERVER_PASSWORD"
             -p 1433:1433
-      - name: Sleep for 10 seconds
-        uses: jakejarvis/wait-action@master
-        with:
-          time: 10s
       - name: Tox
         run: |
-          echo $MYSQL_HOST
           python3 -m pip install -U tox
           sudo apt install python3-dev default-libmysqlclient-dev build-essential -y
           python3 -m tox

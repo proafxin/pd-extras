@@ -72,6 +72,7 @@ jobs:
             -p 1433:1433
       - name: Tox
         run: |
+          echo $MYSQL_HOST
           python3 -m pip install -U tox
           sudo apt install python3-dev default-libmysqlclient-dev build-essential -y
           python3 -m tox

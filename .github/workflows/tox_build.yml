@@ -15,14 +15,6 @@ jobs:
         python-version: ["3.9", "3.10", "3.11"]
 
     steps:
-      - name: Docker Login
-        env:
-          DOCKER_USER: ${{ secrets.DOCKER_USER }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-        run: |
-          echo $DOCKER_USER
-          echo $DOCKER_PASSWORD
-          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
       - uses: actions/checkout@v2
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2

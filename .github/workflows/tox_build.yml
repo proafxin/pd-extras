@@ -6,6 +6,27 @@ on:
   pull_request:
     branches: [develop]
 
+
+
+env:
+  MYSQL_HOST: ${{ vars.MYSQL_HOST }}
+  MYSQL_USER: ${{ vars.MYSQL_USER }}
+  MYSQL_PASSWORD: ${{ vars.MYSQL_PASSWORD }}
+  MYSQL_PORT: ${{ vars.MYSQL_PORT }}
+  POSTGRESQL_HOST: ${{ vars.POSTGRESQL_HOST }}
+  POSTGRESQL_USER: ${{ vars.POSTGRESQL_USER }}
+  POSTGRESQL_PASSWORD: ${{ vars.POSTGRESQL_PASSWORD }}
+  POSTGRESQL_PORT: ${{ vars.POSTGRESQL_PORT }}
+  SQLSERVER_HOST: ${{ vars.SQLSERVER_HOST }}
+  SQLSERVER_USER: ${{ vars.SQLSERVER_USER }}
+  SQLSERVER_PASSWORD: ${{ vars.SQLSERVER_PASSWORD }}
+  SQLSERVER_PORT: ${{ vars.SQLSERVER_PORT }}
+  MONGO_HOST: ${{ vars.MONGO_HOST }}
+  MONGO_USER: ${{ vars.MONGO_USER }}
+  MONGO_PASSWORD: ${{ vars.MONGO_PASSWORD }}
+  MONGO_PORT: ${{ vars.MONGO_PORT }}
+  BIGQUERY_DATASET: ${{ vars.BIGQUERY_DATASET }}
+
 jobs:
   test:
     runs-on: ${{ matrix.os }}
@@ -28,6 +49,8 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           image: mysql:latest
-          options: -v ${{ github.workspace }}:/app
-          run:
-            docker run -d --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=secret mysql:latest
+          options: |
+            -d
+            --name mysql
+            -p 3306:3306
+            -e MYSQL_ROOT_PASSWORD=$MYSQL_PASSWORD

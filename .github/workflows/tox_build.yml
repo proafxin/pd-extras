@@ -9,7 +9,7 @@ on:
 
 
 env:
-  MYSQL_HOST: ${{ vars.MYSQL_HOST }}
+  MYSQL_HOST: localhost
   MYSQL_USER: ${{ vars.MYSQL_USER }}
   MYSQL_PASSWORD: ${{ vars.MYSQL_PASSWORD }}
   MYSQL_PORT: ${{ vars.MYSQL_PORT }}
@@ -52,7 +52,7 @@ jobs:
           options: |
             -d
             --name mysql
-            -p $MYSQL_PORT:$MYSQL_PORT
+            -p 3306:3306
             -e MYSQL_ROOT_PASSWORD=$MYSQL_PASSWORD
       - name: Postgres container
         uses: addnab/docker-run-action@v3

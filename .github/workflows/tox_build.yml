@@ -34,22 +34,35 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         python-version: ["3.9", "3.10", "3.11"]
-
+    services:
+      mysql:
+        image: mysql:latest
+        env:
+          # The MySQL docker container requires these environment variables to be set
+          # so we can create and migrate the test database.
+          # See: https://hub.docker.com/_/mysql
+          MYSQL_ROOT_PASSWORD: $MYSQL_PASSWORD
+        ports:
+          # Opens port 3306 on service container and host
+          # https://docs.github.com/en/actions/using-containerized-services/about-service-containers
+          - 3306:3306
+          # Before continuing, verify the mysql container is reachable from the ubuntu host
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
-      - name: MySQL container
-        uses: addnab/docker-run-action@v3
-        with:
-          image: mysql:latest
-          options: |
-            -d
-            --name mysql
-            -p 3306:3306
-            -e MYSQL_ROOT_PASSWORD=$MYSQL_PASSWORD
+      # - name: MySQL container
+      #   uses: addnab/docker-run-action@v3
+      #   with:
+      #     image: mysql:latest
+      #     options: |
+      #       -d
+      #       --name mysql
+      #       -p 3306:3306
+      #       -e MYSQL_ROOT_PASSWORD=$MYSQL_PASSWORD
       - name: Postgres container
         uses: addnab/docker-run-action@v3
         with:

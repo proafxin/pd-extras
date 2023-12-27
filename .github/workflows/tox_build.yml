@@ -52,7 +52,7 @@ jobs:
           options: |
             -d
             --name mysql
-            -p 3306:3306
+            -p $MYSQL_PORT:$MYSQL_PORT
             -e MYSQL_ROOT_PASSWORD=$MYSQL_PASSWORD
       - name: Postgres container
         uses: addnab/docker-run-action@v3

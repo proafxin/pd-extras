@@ -72,6 +72,7 @@ jobs:
             -p 1433:1433
       - name: Tox
         run: |
+          python3 -m pip install -U tox
           python3 -m tox
       - name: Codecov
         uses: codecov/codecov-action@v3

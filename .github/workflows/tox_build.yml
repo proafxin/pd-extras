@@ -74,3 +74,5 @@ jobs:
             -e "MSSQL_TCP_PORT=1433"
             -e "MSSQL_SA_PASSWORD=$SQLSERVER_PASSWORD"
             -p 1433:1433
+      - name: Tox
+        run: tox

@@ -31,5 +31,9 @@ jobs:
           python -m pip install -U pip
           python -m pip install -U tox tox-gh-actions
       - name: Test with tox
-        run: |
-          docker run -d --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=secret  mysql:latest
+        uses: addnab/docker-run-action@v3
+        with:
+          image: mysql:latest
+          options: -v ${{ github.workspace }}:/app
+          run:
+            -d --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=secret

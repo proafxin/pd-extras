@@ -9,7 +9,7 @@ on:
 
 
 env:
-  MYSQL_HOST: localhost
+  MYSQL_HOST: 127.0.0.1
   MYSQL_USER: ${{ vars.MYSQL_USER }}
   MYSQL_PASSWORD: ${{ vars.MYSQL_PASSWORD }}
   MYSQL_PORT: ${{ vars.MYSQL_PORT }}

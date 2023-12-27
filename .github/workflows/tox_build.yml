@@ -73,7 +73,7 @@ jobs:
       - name: Tox
         run: |
           python3 -m pip install -U tox
-          apt install python3-dev default-libmysqlclient-dev build-essential -y
+          sudo apt install python3-dev default-libmysqlclient-dev build-essential -y
           python3 -m tox
       - name: Codecov
         uses: codecov/codecov-action@v3

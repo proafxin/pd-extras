@@ -57,11 +57,11 @@ jobs:
         ports:
           - 5432:5432
         # Set health checks to wait until postgres has started
-        options: >-
-          --health-cmd psql
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
+        healthcheck:
+          test: /usr/bin/pg_isready
+          interval: 5s
+          timeout: 10s
+          retries: 120
       mssql:
         image: mcr.microsoft.com/mssql/server:2022-latest
         env:

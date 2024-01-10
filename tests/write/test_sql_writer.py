@@ -86,7 +86,7 @@ class TestWriteToSQL:
         result = conn.write_df_to_db(
             data=data,
             table_name=table_name,
-            drop_first=True,
+            # drop_first=True,
         )
         assert conn.has_table(table_name=table_name) is True
         assert isinstance(result, CursorResult)
@@ -110,7 +110,7 @@ class TestWriteToSQL:
         result = conn.write_df_to_db(
             data=data,
             table_name=table_name,
-            drop_first=True,
+            # drop_first=True,
         )
         assert conn.has_table(table_name=table_name) is True
         assert isinstance(result, CursorResult)
@@ -134,7 +134,7 @@ class TestWriteToSQL:
             data=data,
             table_name=table_name,
             id_col="",
-            drop_first=True,
+            # drop_first=True,
         )
         assert isinstance(result, CursorResult)
         assert result.rowcount == data.shape[0]

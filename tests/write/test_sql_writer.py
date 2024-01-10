@@ -9,7 +9,7 @@ from sqlalchemy.engine.cursor import CursorResult
 
 from pd_extras.write.sql_writer import SQLDatabaseWriter
 
-DBNAME = "somedumbdb"
+DBNAME = "anotheruser"
 
 MYSQL_CONNECTION = SQLDatabaseWriter(
     dbtype="mysql",

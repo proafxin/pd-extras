@@ -1,4 +1,4 @@
-"""Flatten dataframes"""
+"""Take dataframes in nosql structure and convert it into sql structure."""
 
 from dataclasses import dataclass, field
 from typing import Union

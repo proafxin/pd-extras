@@ -1,8 +1,9 @@
-"""Write a pandas dataframe to a NoSQL database collection"""
+"""Write a pandas dataframe to a NoSQL database collection."""
 
 
 import pandas as pd
 import pymongo
+
 from pd_extras.write.common import nosql_dbtypes
 
 __all__ = ["NoSQLDatabaseWriter"]

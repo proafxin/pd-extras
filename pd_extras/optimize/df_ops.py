@@ -1,8 +1,6 @@
-"""Optimize dataframe operations"""
-
-
 import numpy as np
 import pandas as pd
+
 from pd_extras.check.sanitize import check_if_columns_exist
 
 

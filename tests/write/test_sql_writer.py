@@ -5,8 +5,9 @@ import random
 
 import numpy as np
 import pandas as pd
-from pd_extras.write.sql_writer import SQLDatabaseWriter
 from sqlalchemy.engine.cursor import CursorResult
+
+from pd_extras.write.sql_writer import SQLDatabaseWriter
 
 DBNAME = "somedumbdb"
 

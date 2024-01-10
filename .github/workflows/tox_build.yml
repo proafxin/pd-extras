@@ -6,8 +6,6 @@ on:
   pull_request:
     branches: [develop]
 
-
-
 env:
   MYSQL_HOST: ${{ vars.MYSQL_HOST }}
   MYSQL_USER: ${{ vars.MYSQL_USER }}
@@ -34,81 +32,12 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         python-version: ["3.9"]
-    services:
-      mysql:
-        image: mysql:latest
-        env:
-          # The MySQL docker container requires these environment variables to be set
-          # so we can create and migrate the test database.
-          # See: https://hub.docker.com/_/mysql
-          MYSQL_ROOT_PASSWORD: $MYSQL_PASSWORD
-        ports:
-          # Opens port 3306 on service container and host
-          # https://docs.github.com/en/actions/using-containerized-services/about-service-containers
-          - 3306:3306
-          # Before continuing, verify the mysql container is reachable from the ubuntu host
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
-      postgres:
-        image: postgres:latest
-        env:
-          POSTGRES_DB: $POSTGRESQL_USER
-          POSTGRES_PASSWORD: $POSTGRESQL_PASSWORD
-          POSTGRES_USER: $POSTGRESQL_USER
-        ports:
-          - 5432:5432
-        # Set health checks to wait until postgres has started
-        options: >-
-          --health-cmd pg_isready -h localhost
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-      mssql:
-        image: mcr.microsoft.com/mssql/server:2022-latest
-        env:
-          SA_PASSWORD: $SQLSERVER_USER
-          ACCEPT_EULA: Y
-        ports:
-          - 1433:1433
-        options: >-
-          --health-cmd sqlcmd
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
-      # - name: MySQL container
-      #   uses: addnab/docker-run-action@v3
-      #   with:
-      #     image: mysql:latest
-      #     options: |
-      #       -d
-      #       --name mysql
-      #       -p 3306:3306
-      #       -e MYSQL_ROOT_PASSWORD=$MYSQL_PASSWORD
-      # - name: Postgres container
-      #   uses: addnab/docker-run-action@v3
-      #   with:
-      #     image: postgres
-      #     options: |
-      #       -d
-      #       --name postgres
-      #       -p 5432:5432
-      #       -e POSTGRES_PASSWORD=$POSTGRESQL_PASSWORD
-      # - name: SQL Server container
-      #   uses: addnab/docker-run-action@v3
-      #   with:
-      #     image: mcr.microsoft.com/mssql/server:2022-latest
-      #     options: |
-      #       -d
-      #       --name sqlserver
-      #       -e "ACCEPT_EULA=Y"
-      #       -e "MSSQL_TCP_PORT=1433"
-      #       -e "MSSQL_SA_PASSWORD=$SQLSERVER_PASSWORD"
-      #       -p 1433:1433
       - name: Tox
         run: |
           python3 -m pip install -U tox

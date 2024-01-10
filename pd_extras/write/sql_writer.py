@@ -3,7 +3,6 @@
 
 import pandas as pd
 from pandas.api.types import is_integer_dtype, is_numeric_dtype  # type: ignore
-from pd_extras.write.common import saved_values
 from sqlalchemy import (
     Column,
     Float,
@@ -16,6 +15,8 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import Session
 from sqlalchemy_utils import create_database, database_exists
+
+from pd_extras.write.common import saved_values
 
 
 class SQLDatabaseWriter:

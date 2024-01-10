@@ -3,6 +3,7 @@
 
 import pandas as pd
 import pymongo
+
 from pd_extras.write.common import nosql_dbtypes
 
 __all__ = ["NoSQLDatabaseWriter"]
